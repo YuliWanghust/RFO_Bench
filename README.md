@@ -6,9 +6,7 @@
 - [Download](#download)
 - [Evaluation](#evaluation)
 - [Baseline](#baseline)
-- [Submission](#submission)
-- [Leaderboard](#leaderboard)
-- [Organizers](#organizers)
+- [Synthetic Methods](#sytheticmethods)
 
 
 ## Background
@@ -94,5 +92,5 @@ FROC is computed as follow. A foregin object is counted as detected as long as o
 
 We provide a baseline result in this [Jupyter Notebook](https://github.com/jfhealthcare/object-CXR/tree/master/baseline/baseline.ipynb).
 
-## Image synthetic method
+## Synthetic Methods
 We provide a synthetic dataset and methods in this [Jupyter Notebook](https://github.com/jfhealthcare/object-CXR/tree/master/baseline/baseline.ipynb).
