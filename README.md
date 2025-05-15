@@ -42,13 +42,11 @@ image_path,annotation
 ......
 ...
 ```
-<ANNO-Number-ID> begins at 1 and increments sequentially to uniquely index each annotated instance, covering all types of RFOs across the dataset.
+```ANNO-Number-ID``` begins at 1 and increments sequentially to uniquely index each annotated instance, covering all types of RFOs across the dataset.
 
-<RFO-types> specifies the classification of each RFO instance and includes two categories: critical (encoded as \texttt{1}) and non-critical (encoded as \texttt{0}).
+```RFO-types``` specifies the classification of each RFO instance and includes two categories: critical (encoded as 1) and non-critical (encoded as 0).
 
-Three types of shapes are used, namely rectangle and polygon. We use \texttt{0} and \texttt{1} as \texttt{ANNO-TYPE-IDX} respectively.
-
-Two types of shapes are used, namely rectangle, ellipse, and polygon. We use `0`, `1`, and `2` as `ANNO_TYPE_IDX` respectively.
+Two types of shapes are used, namely rectangles and polygons. We use `0` and `1` as ```ANNO-TYPE-IDX``` respectively.
 
 - For rectangle and ellipse annotations, we provide the bounding box (upper left and lower right) coordinates in the format `x1 y1 x2 y2` where `x1` < `x2` and `y1` < `y2`.
 
