@@ -1,12 +1,10 @@
-<!--img src="logo.png" width="100%"/-->
-
 - [Background](#background)
 - [Data](#data)
 - [Annotation](#annotation)
 - [Download](#download)
 - [Evaluation](#evaluation)
 - [Baseline](#baseline)
-- [Synthetic Methods](#sytheticmethods)
+- [Synthetic Methods](#sythetic methods)
 
 
 ## Background
@@ -82,8 +80,6 @@ is space seperated 3-element tuple of predicted foreign object coordinates with 
 We use FROC to evaluate the algorithm performance of localizing foreign obects on each given chest X-ray. Because our object annotations are provided in different format, i.e. boxes, ellipses or masks depending on radiologists' annotation habits, it's not suitable to use other common metric, such as mean average precision (mAP) in natural object detection with pure bounding box annotations. FROC is more suitable in this case, since only localization coordinates are required for evaluation. FROC has been used as the metric for measuring medical imaging localization, for example, the lesion localization task within [CAMELYON16](https://camelyon16.grand-challenge.org/Evaluation/) challenge, and tuberculosis localization in (EJ Hwang, 2019, Clinical Infectious Disease).
 
 FROC is computed as follow. A foregin object is counted as detected as long as one predicted cooridinate lies within its annotation. The sensitivity is the number of detected foreign objects dividide by the number of total foreign objects. A predicted coordinate is false positive, if it lies outside any foreign object annotation. When the numbers of false positive coordinates per image are 0.125, 0.25, 0.5, 1, 2, 4, 8, FROC is the average sensitivty of these different versions of predictions. 
-
-
 
 [froc.py](https://github.com/jfhealthcare/object-CXR/tree/master/froc.py) provides the details of how FROC is computed.
 
