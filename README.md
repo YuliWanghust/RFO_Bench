@@ -20,15 +20,9 @@ In this project, we
 - Evaluating two customized synthetic image generation models, [DeepDRR-RFO]() and [RoentGen-RFO](), for creating images with critical RFOs. We train object detection models using these synthetic images, analyze the strengths and weaknesses of each approach, and provide valuable insights to guide future improvements utilizing our openly accessible dataset.
 
 ## Data
-5000 frontal chest X-ray images with foreign objects presented and 5000 frontal chest X-ray images without foreign objects were filmed and collected from about 300 township hosiptials in China. 12 medically-trained radiologists with 1 to 3 years of experience annotated all the images. Each annotator manually annotates the potential foreign objects on a given chest X-ray presented within the lung field. Foreign objects were annotated with bounding boxes, bounding ellipses or masks depending on the shape of the objects. Support devices were excluded from annotation. A typical frontal chest X-ray with foreign objects annotated looks like this:
+Our study, approved by the Johns Hopkins Institutional Review Board (IRB00383214); see Appendix \ref{IRB}), retrospectively identified cases from the Johns Hopkins Health System spanning 2007 to 2024. Utilizing the Johns Hopkins mPower search tool and the Core for Clinical Research Data Acquisition (CCDA) \cite{johnshopkins_ccda}, we initially identified 144 critical RFOs cases. Following our cohort definition protocol, which involved systematic data retrieval, cleaning, and rigorous adherence guided by the radiologist to predefined inclusion criteria, the final cohort consisted of 144 critical RFO cases from 144 distinct patients. A typical frontal chest X-ray without or with foreign objects annotated looks like this:
 ![annotation](figures/rfo_com.png)
-We randomly split the 10000 images into training, validation and test dataset:
-
-**training** 4000 chest X-rays with foreign objects presented; 4000 chest X-rays without foreign objects. 
-
-**validation** 500 chest X-rays with foreign objects presented; 500 chest X-rays without foreign objects. 
-
-**test** 500 chest X-rays with foreign objects presented; 500 chest X-rays without foreign objects. 
+Right sub figures shows the composition of our proposed dataset, comprising 144 critical RFOs cases, 150 No RFOs cases, and 150 No-critical RFOs cases (No RFOs and No-critical RFOs cases are used to construct a class-balanced dataset)We randomly split the 10000 images into training, validation and test dataset with 70%, 10% and 20%.
 
 
 ## Annotation
