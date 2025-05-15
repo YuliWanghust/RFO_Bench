@@ -36,7 +36,7 @@ image_path,annotation
 ...
 ```
 
-Three type of shapes are used namely rectangle, ellipse and polygon. We use `0`, `1` and `2` as `ANNO_TYPE_IDX` respectively.
+Three types of shapes are used namely rectangle, ellipse, and polygon. We use `0`, `1`, and `2` as `ANNO_TYPE_IDX` respectively.
 
 - For rectangle and ellipse annotations, we provide the bounding box (upper left and lower right) coordinates in the format `x1 y1 x2 y2` where `x1` < `x2` and `y1` < `y2`.
 
@@ -54,8 +54,8 @@ The training and validation dataset can be accessed here at [Kaggle](). The imag
 | --------------------------| ------------| ---------- | ------------|
 | Hopkins RFO Bench         | 144         | jpg & csv      | [link]()    |
 | Physics-based systhetic images   | 4000        | jpg & csv      | [link]()    |
-| Physics-based rendring models         | 10        | obj   | [link]()    |
-| DDPM-based sythetic images         | 4000         | jpg & csv      | [link]()    |
+| Physics-based rendering models   | 14        | obj   | [link]()    |
+| DDPM-based sythetic images       | 4000         | jpg & csv      | [link]()    |
 
 For each data type, the example of a dataset includes the following files (will release the full dataset if the paper gets accepted):
 
