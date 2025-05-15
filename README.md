@@ -52,9 +52,9 @@ The training and validation dataset can be accessed here at [Kaggle](). The imag
 
 | Type                      | No. (cases) | Format     | Access Link |
 | --------------------------| ------------| ---------- | ------------|
-| Hopkins RFO Bench         | 144         | jpg & csv      | [link]()    |
-| Physics-based systhetic images   | 4000        | jpg & csv      | [link]()    |
-| Physics-based rendering models   | 14        | obj   | [link]()    |
+| Hopkins RFO Bench         | 144         | jpg & csv      | [link](https://huggingface.co/datasets/Yuliiiiiiiione/Hopkins_RFO_Bench/tree/main/Hopkins_RFO_Bench)    |
+| Physics-based systhetic images   | 4000        | jpg & csv      | [link](https://huggingface.co/datasets/Yuliiiiiiiione/Hopkins_RFO_Bench/tree/main/Physics-based_rendering_models)    |
+| Physics-based rendering models   | 14        | obj   | [link](https://huggingface.co/datasets/Yuliiiiiiiione/Hopkins_RFO_Bench/tree/main/Physics-based_rendering_models)    |
 | DDPM-based sythetic images       | 4000         | jpg & csv      | [link]()    |
 
 For each data type, the example of a dataset includes the following files (will release the full dataset if the paper gets accepted):
