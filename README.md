@@ -36,7 +36,7 @@ image_path,annotation
 ...
 ```
 
-Three types of shapes are used namely rectangle, ellipse, and polygon. We use `0`, `1`, and `2` as `ANNO_TYPE_IDX` respectively.
+Three types of shapes are used, namely rectangle, ellipse, and polygon. We use `0`, `1`, and `2` as `ANNO_TYPE_IDX` respectively.
 
 - For rectangle and ellipse annotations, we provide the bounding box (upper left and lower right) coordinates in the format `x1 y1 x2 y2` where `x1` < `x2` and `y1` < `y2`.
 
@@ -46,7 +46,7 @@ Three types of shapes are used namely rectangle, ellipse, and polygon. We use `0
 > Our annotations use a Cartesian pixel coordinate system, with the origin (0,0) in the upper left corner. The x coordinate extends from left to right; the y coordinate extends downward.
 
 ## Download
-The training and validation dataset can be accessed here at [Kaggle](). The imaging data has been anonymized and is free to download for scientific research and non-commercial usage. We only show a subset of the dataset during the review process, but will open all if the paper is accepted. It consists of the following data splits:
+The training and validation dataset can be accessed here at [Hugging Face](https://huggingface.co/datasets/Yuliiiiiiiione/Hopkins_RFO_Bench/tree/main). The imaging data has been anonymized and is free to download for scientific research and non-commercial usage. We only show a subset of the dataset during the review process, but will open all if the paper is accepted. It consists of the following data splits:
 
 ### Data Structure
 
@@ -55,7 +55,7 @@ The training and validation dataset can be accessed here at [Kaggle](). The imag
 | Hopkins RFO Bench         | 144         | jpg & csv      | [link](https://huggingface.co/datasets/Yuliiiiiiiione/Hopkins_RFO_Bench/tree/main/Hopkins_RFO_Bench)    |
 | Physics-based systhetic images   | 4000        | jpg & csv      | [link](https://huggingface.co/datasets/Yuliiiiiiiione/Hopkins_RFO_Bench/tree/main/Physics-based_rendering_models)    |
 | Physics-based rendering models   | 14        | obj   | [link](https://huggingface.co/datasets/Yuliiiiiiiione/Hopkins_RFO_Bench/tree/main/Physics-based_rendering_models)    |
-| DDPM-based sythetic images       | 4000         | jpg & csv      | [link]()    |
+| DDPM-based sythetic images       | 4000         | jpg & csv      | [link](https://huggingface.co/datasets/Yuliiiiiiiione/Hopkins_RFO_Bench/tree/main/DDPM-based%20sythetic%20images)    |
 
 For each data type, the example of a dataset includes the following files (will release the full dataset if the paper gets accepted):
 
