@@ -45,15 +45,14 @@ Three type of shapes are used namely rectangle, ellipse and polygon. We use `0`,
 > Our annotations use a Cartesian pixel coordinate system, with the origin (0,0) in the upper left corner. The x coordinate extends from left to right; the y coordinate extends downward.
 
 ## Download
-The training and validation dataset can be accessed here at [Google Drive](https://drive.google.com/drive/folders/1SubfNALJn6aO56lUYeJsVpFLZuXurlBC). The imaging data has been
-anonymousized and free to download for scientific research and non-commercial usage.
+The training and validation dataset can be accessed here at [Google Drive](https://drive.google.com/drive/folders/1SubfNALJn6aO56lUYeJsVpFLZuXurlBC). The imaging data has been anonymousized and free to download for scientific research and non-commercial usage.
 
 
 ## Evaluation
 We use two metrics to evaluate the classification and localization performance of foreign objects detection on chest X-rays: Area Under Curve (AUC) and  Free-response Receiver Operating Characteristic (FROC).
 
 ### Classification
-For the test dataset, each algorithm is required to generate a `prediction_classification.csv` file in the format below:
+For the test dataset, baseline model will generate a `prediction_classification.csv` file in the format below:
 ```
 image_path,prediction
 /path/#####.jpg,0.90
@@ -61,9 +60,9 @@ image_path,prediction
 /path/#####.jpg,0.15
 ...
 ```
-where each line corresponds to the prediciton result of one image. The first column is the image path, the second column is the predicted probability, ranging from 0 to 1, indicating whether this image has foregin objects or not.
+where each line corresponds to the prediction result of one image. The first column is the image path, the second column is the predicted probability, ranging from 0 to 1, indicating whether this image has foreign objects or not.
 
-We use AUC to evaluate the algorithm performance of classifying whether each given chest X-ray has foreign objects presented or not. AUC is commonly used to evaluate binary classification in medical imaging challenges. For example, the [CheXpert](https://stanfordmlgroup.github.io/competitions/chexpert/) competition for chest X-ray classification, and the classification task within [CAMELYON16](https://camelyon16.grand-challenge.org/Evaluation/) challenge for whole slide imaging classification. We believe AUC is adequate enough to measure the performance of the classification task of our challenge, especially given our positive and negative data is balanced.
+We use AUC to evaluate the algorithm's performance of classifying whether each given chest X-ray has foreign objects present or not. AUC is commonly used to evaluate binary classification in medical imaging challenges. For example, the [CheXpert](https://stanfordmlgroup.github.io/competitions/chexpert/) competition for chest X-ray classification, and the classification task within [CAMELYON16](https://camelyon16.grand-challenge.org/Evaluation/) challenge for whole slide imaging classification. We believe AUC is adequate enough to measure the performance of the classification task of our challenge, especially given that our positive and negative data is balanced.
 
 ### Localization
 For the test dataset, each algorithm is required to generate a `prediction_localization.csv` file in the format below:
@@ -74,20 +73,31 @@ image_path,prediction
 /path/#####.jpg,0.75 300 600;0.50 400 200;0.15 1000 200
 ...
 ```
-where each line corresponds to the prediciton result of one image. The first column is the image path, the second column
-is space seperated 3-element tuple of predicted foreign object coordinates with its probability in the format of (probability x y), where x and y are the width and height coordinates of the predicted foreign object. It is allowed to have zero predicted 3-element tuple for certain images, if there are no foreign objects presented. But please note the `,` after the first column even if the prediction is empty.
+where each line corresponds to the prediction result of one image. The first column is the image path, the second column
+is space seperated 3-element tuple of predicted foreign object coordinates with its probability in the format of (probability x y), where x and y are the width and height coordinates of the predicted foreign object. It is allowed to have a zero predicted 3-element tuple for certain images, if there are no foreign objects presented. But please note the `,` after the first column, even if the prediction is empty.
 
-We use FROC to evaluate the algorithm performance of localizing foreign obects on each given chest X-ray. Because our object annotations are provided in different format, i.e. boxes, ellipses or masks depending on radiologists' annotation habits, it's not suitable to use other common metric, such as mean average precision (mAP) in natural object detection with pure bounding box annotations. FROC is more suitable in this case, since only localization coordinates are required for evaluation. FROC has been used as the metric for measuring medical imaging localization, for example, the lesion localization task within [CAMELYON16](https://camelyon16.grand-challenge.org/Evaluation/) challenge, and tuberculosis localization in (EJ Hwang, 2019, Clinical Infectious Disease).
+We use FROC to evaluate the algorithm performance of localizing foreign objects on each given chest X-ray. Because our object annotations are provided in different formats, i.e., boxes, ellipse,s or masks, depending on radiologists' annotation habits, it's not suitable to use other common metrics, such as mean average precision (mAP) in natural object detection with pure bounding box annotations. FROC is more suitable in this case, since only localization coordinates are required for evaluation. FROC has been used as the metric for measuring medical imaging localization, for example, the lesion localization task within [CAMELYON16](https://camelyon16.grand-challenge.org/Evaluation/) challenge, and tuberculosis localization in (EJ Hwang, 2019, Clinical Infectious Disease).
 
-FROC is computed as follow. A foregin object is counted as detected as long as one predicted cooridinate lies within its annotation. The sensitivity is the number of detected foreign objects dividide by the number of total foreign objects. A predicted coordinate is false positive, if it lies outside any foreign object annotation. When the numbers of false positive coordinates per image are 0.125, 0.25, 0.5, 1, 2, 4, 8, FROC is the average sensitivty of these different versions of predictions. 
+FROC is computed as follows. A foreign object is counted as detected as long as one predicted coordinate lies within its annotation. The sensitivity is the number of detected foreign objects divided by the number of total foreign objects. A predicted coordinate is a false positive if it lies outside any foreign object annotation. When the number of false positive coordinates per image is 0.125, 0.25, 0.5, 1, 2, 4, 8, FROC is the average sensitivity of these different versions of predictions. 
 
 [froc.py](https://github.com/jfhealthcare/object-CXR/tree/master/froc.py) provides the details of how FROC is computed.
 
 
 ## Baseline
 
-We provide a baseline result in this [Jupyter Notebook](https://github.com/jfhealthcare/object-CXR/tree/master/baseline/baseline.ipynb).
+We provide the code for each baseline model under [Baseline](https://anonymous.4open.science/r/RFO_Bench-8742/README.md).
 
 ## Synthesis
+
+### DeepDRR-RFO
+
+The whole pipeline code of DeepDRR-RFO is available [here](). Our DeepDRR-RFO method, modified from [DeepDRR](https://deepdrr.readthedocs.io/README.html#installation), integrates four key components: 
+- (1)segmentation of CT volumes into anatomical materials using a deep learning-based tool (e.g., Total Segmentor \cite{wasserthal2023totalsegmentator} in our paper available at \url{https://github.com/wasserth/TotalSegmentator}); 
+- (2) construction of 3D RFO models from real surgical items via single-image reconstruction (e.g., Triposor \cite{tochilkin2024triposr} available at \url{https://github.com/VAST-AI-Research/TripoSR}); 
+- (3) physics-based X-ray rendering using material-specific attenuation properties (e.g., National Institute of Standards and Technology
+(NIST) database \url{https://www.nist.gov/data} in this paper); and 
+- (4) automated projection of RFO coordinates to generate pixel-level annotations.
+
+### RoentGen-RFO
 
 We provide a synthetic dataset and methods in this [Jupyter Notebook](https://github.com/jfhealthcare/object-CXR/tree/master/baseline/baseline.ipynb).
