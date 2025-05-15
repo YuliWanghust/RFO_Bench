@@ -16,9 +16,10 @@ In this project, we
 - Evaluating two customized synthetic image generation models, [DeepDRR-RFO]() and [RoentGen-RFO](), for creating images with critical RFOs. We train object detection models using these synthetic images, analyze the strengths and weaknesses of each approach, and provide valuable insights to guide future improvements utilizing our openly accessible dataset.
 
 ## Data
-Our study, approved by the Johns Hopkins Institutional Review Board (IRB00383214); see Appendix \ref{IRB}), retrospectively identified cases from the Johns Hopkins Health System spanning 2007 to 2024. Utilizing the Johns Hopkins mPower search tool and the Core for Clinical Research Data Acquisition (CCDA) \cite{johnshopkins_ccda}, we initially identified 144 critical RFOs cases. Following our cohort definition protocol, which involved systematic data retrieval, cleaning, and rigorous adherence guided by the radiologist to predefined inclusion criteria, the final cohort consisted of 144 critical RFO cases from 144 distinct patients. A typical frontal chest X-ray without or with foreign objects annotated looks like this:
+Our study, approved by the Johns Hopkins Institutional Review Board. Utilizing the Johns Hopkins mPower search tool, we identified a final critical RFO cohort that consisted of 144 critical RFO cases from 144 distinct patients. A typical frontal chest X-ray without or with foreign objects annotated looks like this:
 ![annotation](figures/rfo_com.png)
-Right sub figures shows the composition of our proposed dataset, comprising 144 critical RFOs cases, 150 No RFOs cases, and 150 No-critical RFOs cases (No RFOs and No-critical RFOs cases are used to construct a class-balanced dataset)We randomly split the 10000 images into training, validation and test dataset with 70%, 10% and 20%.
+
+The composition of our Hopkins RFO Bench dataset is shown in the right sub-figures, comprising 144 critical RFOs cases, 150 No RFOs cases, and 150 No-critical RFOs cases (No RFOs and No-critical RFOs cases are used to construct a class-balanced dataset). We randomly split all images into training, validation, and test datasets with 70%, 10%, and 20%.
 
 
 ## Annotation
@@ -45,14 +46,30 @@ Three type of shapes are used namely rectangle, ellipse and polygon. We use `0`,
 > Our annotations use a Cartesian pixel coordinate system, with the origin (0,0) in the upper left corner. The x coordinate extends from left to right; the y coordinate extends downward.
 
 ## Download
-The training and validation dataset can be accessed here at [Google Drive](https://drive.google.com/drive/folders/1SubfNALJn6aO56lUYeJsVpFLZuXurlBC). The imaging data has been anonymousized and free to download for scientific research and non-commercial usage.
+The training and validation dataset can be accessed here at [Kaggle](). The imaging data has been anonymized and is free to download for scientific research and non-commercial usage. We only show a subset of the dataset during the review process, but will open all if the paper is accepted. It consists of the following data splits:
 
+### Data Structure
+
+| Type                      | No. (cases) | Format     | Access Link |
+| --------------------------| ------------| ---------- | ------------|
+| Hopkins RFO Bench         | 144         | jpg & csv      | [link]()    |
+| Physics-based systhetic images   | 4000        | jpg & csv      | [link]()    |
+| Physics-based rendring models         | 10        | obj   | [link]()    |
+| DDPM-based sythetic images         | 4000         | jpg & csv      | [link]()    |
+
+For each data type, the example of a dataset includes the following files (will release the full dataset if the paper gets accepted):
+
+**Dataset organizations**:
+
+1. xxxxx.jpg  % high-resolution chest x-ray images
+2. xxxxx.csv  % image-level or object-level annotations
+3. xxxxx.obj  % rendering volumes of RFO used for physics-based synthetic methods
 
 ## Evaluation
 We use two metrics to evaluate the classification and localization performance of foreign objects detection on chest X-rays: Area Under Curve (AUC) and  Free-response Receiver Operating Characteristic (FROC).
 
 ### Classification
-For the test dataset, baseline model will generate a `prediction_classification.csv` file in the format below:
+For the classification task, the baseline model will generate a `prediction_classification.csv` file in the format below:
 ```
 image_path,prediction
 /path/#####.jpg,0.90
@@ -62,10 +79,10 @@ image_path,prediction
 ```
 where each line corresponds to the prediction result of one image. The first column is the image path, the second column is the predicted probability, ranging from 0 to 1, indicating whether this image has foreign objects or not.
 
-We use AUC to evaluate the algorithm's performance of classifying whether each given chest X-ray has foreign objects present or not. AUC is commonly used to evaluate binary classification in medical imaging challenges. We believe AUC is adequate enough to measure the performance of the classification task of our challenge, especially given that our positive and negative data is balanced.
+We use AUC to evaluate the algorithm's performance in classifying whether each given chest X-ray has foreign objects present or not. AUC is commonly used to evaluate binary classification in medical imaging challenges. We believe AUC is adequate enough to measure the performance of the classification task of our challenge, especially given that our positive and negative data is balanced.
 
 ### Localization
-For the test dataset, each algorithm is required to generate a `prediction_localization.csv` file in the format below:
+For localization task, each algorithm is required to generate a `prediction_localization.csv` file in the format below:
 ```
 image_path,prediction
 /path/#####.jpg,0.90 1000 500;0.80 200 400
@@ -73,14 +90,11 @@ image_path,prediction
 /path/#####.jpg,0.75 300 600;0.50 400 200;0.15 1000 200
 ...
 ```
-where each line corresponds to the prediction result of one image. The first column is the image path, the second column
-is space seperated 3-element tuple of predicted foreign object coordinates with its probability in the format of (probability x y), where x and y are the width and height coordinates of the predicted foreign object. It is allowed to have a zero predicted 3-element tuple for certain images, if there are no foreign objects presented. But please note the `,` after the first column, even if the prediction is empty.
+where each line corresponds to the prediction result of one image. The first column is the image path, the second column is space seperated 3-element tuple of predicted foreign object coordinates with its probability in the format of (probability x y), where x and y are the width and height coordinates of the predicted foreign object. It is allowed to have a zero predicted 3-element tuple for certain images if there are no foreign objects presented. But please note the `,` after the first column, even if the prediction is empty.
 
-We use FROC to evaluate the algorithm performance of localizing foreign objects on each given chest X-ray. Because our object annotations are provided in different formats, i.e., boxes, ellipse,s or masks, depending on radiologists' annotation habits, it's not suitable to use other common metrics, such as mean average precision (mAP) in natural object detection with pure bounding box annotations. FROC is more suitable in this case, since only localization coordinates are required for evaluation. FROC has been used as the metric for measuring medical imaging localization, for example, the lesion localization task within [CAMELYON16](https://camelyon16.grand-challenge.org/Evaluation/) challenge, and tuberculosis localization in (EJ Hwang, 2019, Clinical Infectious Disease).
+We use FROC to evaluate the algorithm's performance in localizing foreign objects on each given chest X-ray. Because our object annotations are provided in different formats, i.e., boxes, ellipse,s or masks, depending on radiologists' annotation habits, it's not suitable to use other common metrics, such as mean average precision (mAP) in natural object detection with pure bounding box annotations. FROC is more suitable in this case, since only localization coordinates are required for evaluation.
 
-FROC is computed as follows. A foreign object is counted as detected as long as one predicted coordinate lies within its annotation. The sensitivity is the number of detected foreign objects divided by the number of total foreign objects. A predicted coordinate is a false positive if it lies outside any foreign object annotation. When the number of false positive coordinates per image is 0.125, 0.25, 0.5, 1, 2, 4, 8, FROC is the average sensitivity of these different versions of predictions. 
-
-[froc.py](https://github.com/jfhealthcare/object-CXR/tree/master/froc.py) provides the details of how FROC is computed.
+FROC is computed as follows. A foreign object is counted as detected as long as one predicted coordinate lies within its annotation. The sensitivity is the number of detected foreign objects divided by the number of total foreign objects. A predicted coordinate is a false positive if it lies outside any foreign object annotation. When the number of false positive coordinates per image is 0.125, 0.25, 0.5, 1, 2, 4, 8, FROC is the average sensitivity of these different versions of predictions. [froc.py](https://github.com/jfhealthcare/object-CXR/tree/master/froc.py) provides the details of how FROC is computed.
 
 
 ## Baseline
