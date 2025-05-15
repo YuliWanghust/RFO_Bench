@@ -94,17 +94,5 @@ FROC is computed as follow. A foregin object is counted as detected as long as o
 
 We provide a baseline result in this [Jupyter Notebook](https://github.com/jfhealthcare/object-CXR/tree/master/baseline/baseline.ipynb).
 
-## Submission
-We host the online submission system at [codalab](https://worksheets.codalab.org/worksheets/0xcd2fb3db8ae74d03b53ad4c5bf81ebe2)
-
-## Leaderboard
-
-| Rank    | Date |  Model  | AUC| FROC|
-| ------- | -----| --------| ---| ----| 
-| 1       |Feb 21, 2020 | [JF Healthcare baseline](https://github.com/jfhealthcare/object-CXR#baseline) | 0.9209 |0.8031|
-
-## Organizers
-[JF Healthcare](http://www.jfhealthcare.com/) is the primary organizer of this challenge
-
-<img src="jf.png" width="50%" align="middle"/>
-
+## Image synthetic method
+We provide a synthetic dataset and methods in this [Jupyter Notebook](https://github.com/jfhealthcare/object-CXR/tree/master/baseline/baseline.ipynb).
