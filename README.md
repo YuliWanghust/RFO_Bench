@@ -93,4 +93,5 @@ FROC is computed as follow. A foregin object is counted as detected as long as o
 We provide a baseline result in this [Jupyter Notebook](https://github.com/jfhealthcare/object-CXR/tree/master/baseline/baseline.ipynb).
 
 ## Synthetic Methods
+
 We provide a synthetic dataset and methods in this [Jupyter Notebook](https://github.com/jfhealthcare/object-CXR/tree/master/baseline/baseline.ipynb).
