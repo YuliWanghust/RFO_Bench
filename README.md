@@ -62,7 +62,7 @@ image_path,prediction
 ```
 where each line corresponds to the prediction result of one image. The first column is the image path, the second column is the predicted probability, ranging from 0 to 1, indicating whether this image has foreign objects or not.
 
-We use AUC to evaluate the algorithm's performance of classifying whether each given chest X-ray has foreign objects present or not. AUC is commonly used to evaluate binary classification in medical imaging challenges. For example, the [CheXpert](https://stanfordmlgroup.github.io/competitions/chexpert/) competition for chest X-ray classification, and the classification task within [CAMELYON16](https://camelyon16.grand-challenge.org/Evaluation/) challenge for whole slide imaging classification. We believe AUC is adequate enough to measure the performance of the classification task of our challenge, especially given that our positive and negative data is balanced.
+We use AUC to evaluate the algorithm's performance of classifying whether each given chest X-ray has foreign objects present or not. AUC is commonly used to evaluate binary classification in medical imaging challenges. We believe AUC is adequate enough to measure the performance of the classification task of our challenge, especially given that our positive and negative data is balanced.
 
 ### Localization
 For the test dataset, each algorithm is required to generate a `prediction_localization.csv` file in the format below:
@@ -92,11 +92,11 @@ We provide the code for each baseline model under [Baseline](https://anonymous.4
 ### DeepDRR-RFO
 
 The whole pipeline code of DeepDRR-RFO is available [here](). Our DeepDRR-RFO method, modified from [DeepDRR](https://deepdrr.readthedocs.io/README.html#installation), integrates four key components: 
-- (1)segmentation of CT volumes into anatomical materials using a deep learning-based tool (e.g., Total Segmentor \cite{wasserthal2023totalsegmentator} in our paper available at \url{https://github.com/wasserth/TotalSegmentator}); 
-- (2) construction of 3D RFO models from real surgical items via single-image reconstruction (e.g., Triposor \cite{tochilkin2024triposr} available at \url{https://github.com/VAST-AI-Research/TripoSR}); 
-- (3) physics-based X-ray rendering using material-specific attenuation properties (e.g., National Institute of Standards and Technology
-(NIST) database \url{https://www.nist.gov/data} in this paper); and 
-- (4) automated projection of RFO coordinates to generate pixel-level annotations.
+- (1) Segmentation of CT volumes into anatomical materials using [Total Segmentor](https://github.com/wasserth/TotalSegmentator); 
+- (2) Construction of 3D RFO models from real surgical items using [Triposor](https://github.com/VAST-AI-Research/TripoSR); 
+- (3) Physics-based X-ray rendering using material-specific attenuation properties from [National Institute of Standards and Technology
+(NIST) database](https://www.nist.gov/data)
+- (4) Automated projection of RFO coordinates to generate pixel-level annotations, refers to [DeepDRR-RFO]().
 
 ### RoentGen-RFO
 
