@@ -18,7 +18,7 @@ torch.manual_seed(0)
 OBJECT_SEP = ';'
 ANNOTATION_SEP = ' '
 
-data_dir = 'E:\\Yuli\\Projects\\ROF\\object-CXR\\'
+data_dir = 'E:\\Yuli\\Projects\\ROF\\Hopkins_RFO_Bench\\'
 
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
