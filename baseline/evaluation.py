@@ -16,7 +16,7 @@ import torchvision.transforms as transforms
 
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 num_classes = 2
-data_dir = 'E:\\Yuli\\Projects\\ROF\\object-CXR\\'
+data_dir = 'E:\\Yuli\\Projects\\ROF\\Hopkins_RFO_Bench\\'
 
 labels_tr = pd.read_csv(data_dir + 'train.csv', na_filter=False)
 labels_dev = pd.read_csv(data_dir + 'dev.csv', na_filter=False)
