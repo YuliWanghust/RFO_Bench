@@ -5,7 +5,7 @@ import yaml
 import subprocess
 
 # Define global paths
-data_root = 'E:/Yuli/Projects/ROF/object-CXR'
+data_root = 'E:/Yuli/Projects/ROF/Hopkins_RFO_Bench'
 train_img_dir = os.path.join(data_root, 'images/train')
 val_img_dir = os.path.join(data_root, 'images/val')
 train_csv = os.path.join(data_root, 'train.csv')
