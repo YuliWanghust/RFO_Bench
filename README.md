@@ -78,7 +78,7 @@ For each data type, the example of a dataset includes the following files (will 
 4. xxxxx.obj  % rendering volumes of RFO used for physics-based synthetic methods
 
 ## Evaluation
-We use two metrics to evaluate the classification and localization performance of foreign objects detection on chest X-rays: Area Under Curve (AUC) and  Free-response Receiver Operating Characteristic (FROC).
+We use two metrics to evaluate the classification and localization performance of foreign objects detection on chest X-rays: Area Under Curve (AUC) and  Free-response Receiver Operating Characteristic (FROC), which is adopted from [object-CXR](https://github.com/hlk-1135/object-CXR).
 
 ### Classification
 For the classification task, the baseline model will generate a `prediction_classification.csv` file in the format below:
@@ -148,4 +148,5 @@ The whole pipeline code of DeepDRR-RFO is available [here](). Our DeepDRR-RFO me
 
 Our RoentGen-RFO method, modified from [RoentGen](https://stanfordmimi.github.io/RoentGen/), with customized prompts RFO text input, which is shown in the Appendix of the paper.
 
+### Reference
 This website template was adapted from [object-CXR](https://github.com/hlk-1135/object-CXR).
