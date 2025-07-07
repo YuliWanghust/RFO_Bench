@@ -6,6 +6,7 @@
 - [Usage](#usage)
 - [Baseline](#baseline)
 - [Synthesis](#synthesis)
+- [Reference](#reference)
 
 
 ## Background
@@ -148,5 +149,5 @@ The whole pipeline code of DeepDRR-RFO is available [here](). Our DeepDRR-RFO me
 
 Our RoentGen-RFO method, modified from [RoentGen](https://stanfordmimi.github.io/RoentGen/), with customized prompts RFO text input, which is shown in the Appendix of the paper.
 
-### Reference
+## Reference
 This website template was adapted from [object-CXR](https://github.com/hlk-1135/object-CXR).
