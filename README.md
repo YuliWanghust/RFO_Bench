@@ -87,12 +87,11 @@ For the classification task, the baseline model will generate a `prediction_clas
 image_path,prediction
 /path/#####.jpg,0.90
 /path/#####.jpg,0.85
-/path/#####.jpg,0.15
 ...
 ```
-where each line corresponds to the prediction result of one image. The first column is the image path, the second column is the predicted probability, ranging from 0 to 1, indicating whether this image has foreign objects or not.
+Each line in the prediction file represents one image. The first column is the image path, followed by the predicted probability (0 to 1) indicating the presence of foreign objects.
 
-We use AUC to evaluate the algorithm's performance in classifying whether each given chest X-ray has foreign objects present or not. AUC is commonly used to evaluate binary classification in medical imaging challenges. We believe AUC is adequate enough to measure the performance of the classification task of our challenge, especially given that our positive and negative data are balanced.
+We use the Area Under the Curve (AUC) to evaluate binary classification performance—whether a chest X-ray contains foreign objects. AUC is a standard metric in medical imaging and is well-suited for our task, especially given the balanced distribution of positive and negative cases.
 
 ### Localization
 For the localization task, each algorithm is required to generate a `prediction_localization.csv` file in the format below:
@@ -100,14 +99,11 @@ For the localization task, each algorithm is required to generate a `prediction_
 image_path,prediction
 /path/#####.jpg,0.90 1000 500;0.80 200 400
 /path/#####.jpg,
-/path/#####.jpg,0.75 300 600;0.50 400 200;0.15 1000 200
 ...
 ```
-Each line in the prediction file corresponds to one image. The first column contains the image path, followed by a comma. The second column lists a space-separated 3-element tuple in the format (probability x y), representing the predicted probability and the (x, y) coordinates of a foreign object. If no foreign object is detected in an image, a placeholder of a zero-valued tuple may be used. Note: Even when the prediction is empty, the comma after the image path must still be present.
+Each line in the prediction file corresponds to one image. The first column is the image path, followed by a comma. The second column contains space-separated tuples in the format (probability x y), representing the confidence and coordinates of predicted foreign objects. If no object is detected, a zero-valued placeholder tuple is used. The comma must always follow the image path, even for empty predictions.
 
-We evaluate the algorithm’s ability to localize foreign objects on chest X-rays using the Free-response Receiver Operating Characteristic (FROC) curve. Due to variations in our ground truth annotations—some provided as bounding boxes, ellipses, or masks depending on radiologist preferences—conventional metrics like mean Average Precision (mAP), which assume consistent bounding box annotations, are not appropriate. FROC is more suitable because it only requires predicted coordinates for evaluation.
-
-FROC is computed as follows: a foreign object is considered correctly localized if at least one predicted coordinate falls within its annotated region. Sensitivity is defined as the number of detected foreign objects divided by the total number of annotated objects. Any predicted coordinate falling outside all annotated regions is counted as a false positive. FROC is then calculated as the average sensitivity at various false positive rates per image: 0.125, 0.25, 0.5, 1, 2, 4, and 8. [froc.py](https://github.com/jfhealthcare/object-CXR/tree/master/froc.py) provides the details of how FROC is computed.
+We evaluate localization performance using the Free-response Receiver Operating Characteristic (FROC) curve, which suits our heterogeneous annotations (boxes, ellipses, masks) better than mAP. A prediction is correct if any predicted point falls within a ground truth region. Sensitivity is the number of correctly localized objects divided by the total number of annotated objects. False positives are predictions outside all annotations. FROC is calculated as average sensitivity at false positive rates per image: 0.125, 0.25, 0.5, 1, 2, 4, and 8. [froc.py](https://github.com/jfhealthcare/object-CXR/tree/master/froc.py) provides the details of how FROC is computed.
 
 
 # Usage
