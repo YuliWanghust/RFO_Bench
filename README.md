@@ -86,7 +86,6 @@ For the classification task, the baseline model will generate a `prediction_clas
 ```
 image_path,prediction
 /path/#####.jpg,0.90
-/path/#####.jpg,0.85
 ...
 ```
 Each line in the prediction file represents one image. The first column is the image path, followed by the predicted probability (0 to 1) indicating the presence of foreign objects.
@@ -98,7 +97,6 @@ For the localization task, each algorithm is required to generate a `prediction_
 ```
 image_path,prediction
 /path/#####.jpg,0.90 1000 500;0.80 200 400
-/path/#####.jpg,
 ...
 ```
 Each line in the prediction file corresponds to one image. The first column is the image path, followed by a comma. The second column contains space-separated tuples in the format (probability x y), representing the confidence and coordinates of predicted foreign objects. If no object is detected, a zero-valued placeholder tuple is used. The comma must always follow the image path, even for empty predictions.
