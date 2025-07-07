@@ -147,3 +147,5 @@ The whole pipeline code of DeepDRR-RFO is available [here](). Our DeepDRR-RFO me
 ### RoentGen-RFO
 
 Our RoentGen-RFO method, modified from [RoentGen](https://stanfordmimi.github.io/RoentGen/), with customized prompts RFO text input, which is shown in the Appendix of the paper.
+
+This website template was adapted from [object-CXR](https://github.com/hlk-1135/object-CXR).
