@@ -144,5 +144,5 @@ The whole pipeline code of DeepDRR-RFO is available [here](). Our DeepDRR-RFO me
 Our RoentGen-RFO method, modified from [RoentGen](https://stanfordmimi.github.io/RoentGen/), with customized prompts RFO text input, which is shown in the Appendix of the paper.
 
 ## Reference
-[1] [object-CXR](https://github.com/hlk-1135/object-CXR)
+[1] [object-CXR](https://github.com/hlk-1135/object-CXR);
 [2] [Faster-RCNN(https://docs.pytorch.org/vision/main/models/faster_rcnn.html)]
