@@ -128,6 +128,28 @@ conda activate Hopkins_RFO
 
 We provide the code for each baseline model under [Baseline](https://anonymous.4open.science/r/RFO_Bench-8742/README.md).
 
+When you download the dataset from Hugging Face, and can run the code Python by using the following instructions:
+
+Baseline Model for FasterRCNN:
+```
+python ./main_fasterrcnn.py
+```
+Baseline Model for FCOS:
+```
+python ./main_fcos.py
+```
+Baseline Model for Retina:
+```
+python ./main_retina.py
+```
+Baseline Model for YOLO:
+```
+python ./main_yolo.py
+```
+Baseline Model for VIT:
+```
+python ./main_vit.py
+```
 ## Synthesis
 
 ### DeepDRR-RFO
@@ -137,7 +159,7 @@ The whole pipeline code of DeepDRR-RFO is available [here](). Our DeepDRR-RFO me
 - (2) Construction of 3D RFO models from real surgical items using [Triposor](https://github.com/VAST-AI-Research/TripoSR); 
 - (3) Physics-based X-ray rendering using material-specific attenuation properties from [National Institute of Standards and Technology
 (NIST) database](https://www.nist.gov/data)
-- (4) Automated projection of RFO coordinates to generate pixel-level annotations, refers to [DeepDRR-RFO]().
+- (4) Automated projection of RFO coordinates to generate pixel-level annotations, refers to [DeepDRR-RFO](https://anonymous.4open.science/r/RFO_DeepDRR-25D5/README.md).
 
 ### RoentGen-RFO
 
