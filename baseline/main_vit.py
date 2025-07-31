@@ -87,7 +87,7 @@ def main():
     dev_loader = torch.utils.data.DataLoader(dataset_dev, batch_size=1, shuffle=False, num_workers=4)
 
     optimizer = torch.optim.AdamW(model.parameters(), lr=1e-5)
-    num_epochs = 10
+    num_epochs = 50
     auc_max = 0
 
     for epoch in range(num_epochs):
