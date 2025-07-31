@@ -167,4 +167,7 @@ Our RoentGen-RFO method, modified from [RoentGen](https://stanfordmimi.github.io
 
 ## Reference
 [1] [object-CXR](https://github.com/hlk-1135/object-CXR);
-[2] [Faster-RCNN(https://docs.pytorch.org/vision/main/models/faster_rcnn.html)]
+
+[2] [Faster-RCNN](https://docs.pytorch.org/vision/main/models/faster_rcnn.html);
+
+[3] [ViT](https://huggingface.co/learn/computer-vision-course/en/unit3/vision-transformers/vision-transformer-for-objection-detection)
