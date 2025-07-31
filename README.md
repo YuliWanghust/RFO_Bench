@@ -79,7 +79,7 @@ For each data type, the example of a dataset includes the following files (will 
 4. xxxxx.obj  % rendering volumes of RFO used for physics-based synthetic methods
 
 ## Evaluation
-We use two metrics to evaluate the classification and localization performance of foreign objects detection on chest X-rays: Area Under Curve (AUC) and  Free-response Receiver Operating Characteristic (FROC), which is adopted from [object-CXR](https://github.com/hlk-1135/object-CXR).
+We use two metrics to evaluate the classification and localization performance of foreign objects detection on chest X-rays: Area Under Curve (AUC) and  Free-response Receiver Operating Characteristic (FROC).
 
 ### Classification
 For the classification task, the baseline model will generate a `prediction_classification.csv` file in the format below:
